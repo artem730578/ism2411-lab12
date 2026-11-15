@@ -59,3 +59,27 @@ with open(SALES_FILE, "r") as f_in, open(CLEANED_FILE, "w", newline="") as f_out
             writer.writerow([row[0], price, qty, round(line_total, 2)])
             written_count += 1
 print(f"Wrote {written_count} of {original_count} rows to {CLEANED_FILE}")
+
+
+print("-- Exercise 6 --")
+dict_total = 0
+with open(SALES_FILE, "r") as f:
+    reader = csv.DictReader(f)                 # each row becomes a dict
+    for row in reader:
+        line_total = float(row["price"]) * int(row["quantity"])
+        dict_total += line_total
+        print(f"{row['product']}: ${line_total:.2f}")
+print(f"Total revenue: ${dict_total:.2f}")
+# csv.reader uses positions like row[1], which is short but breaks if columns move.
+# csv.DictReader uses column names like row["price"], which is clearer and safer.
+
+print("-- Exercise 7 --")
+summary = {}
+with open(SALES_FILE, "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        product = row["product"]
+        line_total = float(row["price"]) * int(row["quantity"])
+        summary[product] = summary.get(product, 0) + line_total
+for product in sorted(summary):
+    print(f"{product}: ${summary[product]:.2f}")
