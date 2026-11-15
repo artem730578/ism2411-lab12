@@ -2,6 +2,17 @@
 # Author : Artem Chernyshev
 # Module 12 Lab: Read a Sales CSV, Write a Cleaned Report
 
+# Reflection
+# 1- In Excel I would open the file, filter rows and copy them by hand each time.
+# Python does the same steps automatically, works on huge files, and gives the same result
+# every run. Excel is better for a quick look at small files, while Python is better for bigger
+# files and repeated tasks.
+#
+# 2- A warehouse could log every daily inventory count to a file. Append mode adds
+# a new line each day without deleting the old ones, so the company keeps a full
+# history that can be checked later for trends or mistakes.
+
+
 import csv
 from datetime import datetime
 
