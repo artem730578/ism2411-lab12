@@ -19,3 +19,10 @@ with open(SALES_FILE, "r") as f:
     for row in reader:
         print(row)
 
+print("-- Exercise 3 --")
+with open(SALES_FILE, "r") as f:
+    reader = csv.reader(f)
+    header = next(reader)          # take the header row out first
+    print("Header:", header)
+    for row in reader:             # loop starts at the first data row
+        print(row)
